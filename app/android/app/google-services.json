@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "417173125690",
+    "project_id": "aman-guru-solution",
+    "storage_bucket": "aman-guru-solution.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417173125690:android:ea845bf5afeadfcb46d303",
+        "android_client_info": {
+          "package_name": "com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417173125690-b3uq8o5gi62kvh4qgsq4clbag5cggmlt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi2nfiEZYz8-jCo7X4kG-j2_F7j6QVqL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417173125690-b3uq8o5gi62kvh4qgsq4clbag5cggmlt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
