@@ -5,6 +5,7 @@ import { FirebaseAuthTypes } from '@react-native-firebase/auth';
 export const sendVerificationCode = async (phone: string) => {
     try {
         const confirmation = await auth().signInWithPhoneNumber(phone);
+        console.log('sendVerificationCode, confirmation: ', JSON.stringify(confirmation));
         if (confirmation) {
             return confirmation.verificationId;
         }
@@ -18,8 +19,9 @@ export const sendVerificationCode = async (phone: string) => {
 export const signInWithVerificationCode = async (verificationId: string, code: string) => {
     try {
         const credentials: FirebaseAuthTypes.AuthCredential = auth.PhoneAuthProvider.credential(verificationId, code);
+        console.log('signInWithVerificationCode, credentials: ',JSON.stringify(credentials));
         const userCredential: FirebaseAuthTypes.UserCredential = await auth().signInWithCredential(credentials);
-        console.log('userDetails', JSON.stringify(userCredential));
+        console.log('signInWithVerificationCode, userCredentials', JSON.stringify(userCredential));
         return userCredential;
     } catch (err) {
         console.log('Error While signInWithVerificationCode: ', JSON.stringify(err));
@@ -28,10 +30,17 @@ export const signInWithVerificationCode = async (verificationId: string, code: s
 };
 
 export const updateUserDetail = async (displayName: string, photoUrl: string, email: string) => {
-    const user = auth().currentUser;
-    await user?.updateProfile({
-        displayName: displayName,
-        photoURL: photoUrl,
-    });
-    await user?.updateEmail(email);
+    try {
+        const user = auth().currentUser;
+        console.log('updateUserDetails, user: ', JSON.stringify(user));
+        await user?.updateProfile({
+            displayName: displayName,
+            photoURL: photoUrl,
+        });
+        await user?.updateEmail(email);
+        console.log('auth user successfully updated');
+    } catch (err) {
+        console.log('Error, updateUserDetail, err: ', JSON.stringify(err));
+        throw err;
+    }
 };

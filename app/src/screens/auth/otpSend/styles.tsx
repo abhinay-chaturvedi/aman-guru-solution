@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
       marginBottom: 50,
       marginTop: 50,
       fontSize: 15,
+      color: 'black',
+      fontWeight: 'bold',
     },
     inputContainer: {
       flexDirection: 'row',
@@ -27,11 +29,13 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       alignContent: 'center',
       alignItems: 'center',
+      color: 'black',
     },
     phoneInputContainer: {
       marginLeft: 5,
       flex: 1,
       height: 50,
+      color: 'black',
     },
     viewButton: {
       flex: 1,
@@ -50,6 +54,10 @@ const styles = StyleSheet.create({
     buttonText: {
       alignItems: 'center',
       color: '#ffffff',
+    },
+    countryCode: {
+      color: 'black',
+      fontWeight: '700',
     },
   });
   export default styles;

@@ -13,12 +13,14 @@ title: {
     fontSize: 20,
     marginStart: 20,
     fontWeight:'bold',
+    color: 'black',
 },
 subTitle: {
     textAlign: 'left',
     fontSize: 16,
     marginStart: 20,
     marginTop: 10,
+    color: 'black',
 },
 codeFieldRoot: {
     marginTop: 40,
@@ -46,6 +48,7 @@ focusCell: {
 
 button: {
     marginTop: 20,
+    borderRadius: 50,
 },
 resendCode: {
     color: 'blue',
@@ -55,6 +58,8 @@ resendCode: {
 resendCodeText: {
     marginStart: 20,
     marginTop: 40,
+    color: 'black',
+    fontWeight: '500',
 },
 resendCodeContainer: {
     flexDirection: 'row',

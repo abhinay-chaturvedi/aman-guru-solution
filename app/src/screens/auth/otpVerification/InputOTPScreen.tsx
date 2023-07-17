@@ -3,20 +3,30 @@ import { SafeAreaView, Text, View ,TouchableOpacity, Button} from 'react-native'
 import { CodeField, Cursor, useBlurOnFulfill, useClearByFocusCell } from
 'react-native-confirmation-code-field';
 import { styles } from './styles';
+import { signInWithVerificationCode, updateUserDetail } from '../../../services/firebase/Authentication';
 
 interface VerifyCodeProps {
 }
 const CELL_COUNT = 6;
 const RESEND_OTP_TIME_LIMIT = 90;
 
-const InputOTPScreen: React.FC<VerifyCodeProps> = () => {
+const InputOTPScreen: React.FC<VerifyCodeProps> = ({route, ...inputScreenProps}: any) => {
 let resendOtpTimerInterval: any;
-
+const [value, setValue] = useState('');
+console.log('Value: ', value);
 const [resendButtonDisabledTime, setResendButtonDisabledTime] = useState(
     RESEND_OTP_TIME_LIMIT,
 );
-const sendOtpFirebase = () => {
-  console.log("sendOtp firevbase pressed");
+const sendOtpFirebase = async () => {
+  console.log('sendOtp firevbase pressed');
+  try {
+    console.log('Route: ', JSON.stringify(route));
+    const { verificationId } = route.params;
+    const userCredential = await signInWithVerificationCode(verificationId, value);
+    console.log('SuccessFully Login');
+  } catch (err) {
+    console.log('Error, sendOtpFirebase, err: ', JSON.stringify(err));
+  }
 };
 //to start resent otp option
 const startResendOtpTimer = () => {
@@ -45,7 +55,7 @@ const onResendOtpButtonPress = () => {
 };
 
 //declarations for input field
-const [value, setValue] = useState('');
+
 const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
 const [props, getCellOnLayoutHandler] = useClearByFocusCell({
     value,
@@ -65,7 +75,7 @@ useEffect(() => {
 return (
     <SafeAreaView style={styles.root}>
         <Text style={styles.title}>Verify the Authorisation Code</Text>
-        <Text style={styles.subTitle}>Sent to 7687653902</Text>
+        <Text style={styles.subTitle}>Sent to {route.params.phone}</Text>
         <CodeField
             ref={ref}
             {...props}
@@ -100,7 +110,10 @@ return (
             )
         }
         <View style={styles.button}>
-            <Button title="Submit" onPress={sendOtpFirebase} />
+            <Button
+             title="Submit"
+             onPress={sendOtpFirebase}
+             />
         </View>
     </SafeAreaView >
 );

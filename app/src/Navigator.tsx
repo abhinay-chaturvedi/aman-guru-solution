@@ -3,11 +3,12 @@
 
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Authentication from './screens/auth/otpSend/Authentication';
-import InputOTPScreen from './screens/auth/otpVerification/InputOTPScreen';
 const Stack = createNativeStackNavigator();
-
+import Authentication from './screens/auth/otpSend';
+import InputOTPScreen from './screens/auth/otpVerification';
+// import { updateUserDetail } from './services/firebase/Authentication';
 export const UnAuthorizedNavigator = (): JSX.Element => {
+
 
     return (
       <Stack.Navigator initialRouteName="Authentication">

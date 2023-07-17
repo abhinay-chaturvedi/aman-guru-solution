@@ -7,18 +7,17 @@
 
 import React from 'react';
 // import type { PropsWithChildren } from 'react';
-
-import { StyleSheet } from 'react-native';
 import AmanGuru from './AmanGuru';
-
+import { Provider as StoreProvider } from 'react-redux';
+import store from './redux/store';
 function App(): JSX.Element {
 
   return (
-    <AmanGuru/>
+    <StoreProvider store={store}>
+      <AmanGuru/>
+    </StoreProvider>
   );
 }
 
-const styles = StyleSheet.create({
-});
 
 export default App;
