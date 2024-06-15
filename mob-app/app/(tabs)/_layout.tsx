@@ -9,6 +9,7 @@ import { HistoryIcon, OrdersIcon, ProfileIcon, TabBarIcon } from '@/components/n
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
+  console.log(colorScheme)
 
   return (
     <Tabs
@@ -31,7 +32,7 @@ export default function TabLayout() {
           title: 'Orders',
           tabBarIcon: ({ color, focused }) => (
             // <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-            <OrdersIcon/>
+            <OrdersIcon color={color}/>
           ),
         }}
       />
@@ -41,7 +42,7 @@ export default function TabLayout() {
           title: 'History',
           tabBarIcon: ({ color, focused }) => (
             // <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-            <HistoryIcon color={focused ? 'white': 'gray'}/>
+            <HistoryIcon color={color}/>
           ),
         }}
       />
@@ -51,7 +52,7 @@ export default function TabLayout() {
           title: 'Profile',
           tabBarIcon: ({ color, focused }) => (
             // <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-            <ProfileIcon/>
+            <ProfileIcon color={color}/>
           ),
         }}
       />
