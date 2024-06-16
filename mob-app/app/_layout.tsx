@@ -45,7 +45,11 @@ export default function RootLayout() {
             ),
           }}
         />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen name="register" />
+        <Stack.Screen name="login" />
+        <Stack.Screen options={{headerTitle: "Profile"}} name="profile" />
+
+        <Stack.Screen  name="+not-found" />
       </Stack>
     </ThemeProvider>
   );

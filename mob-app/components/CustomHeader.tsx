@@ -2,11 +2,12 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Dimensions } from "react-native";
 
 import React from "react";
+import { router } from "expo-router";
 let screenWidth = Dimensions.get("window").width
 const CustomHeader = ({ tintColor }: { tintColor: string }) => {
   // console.log(props.props)
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => router.push("/profile")}>
     <View style={{alignSelf: "stretch",display: "flex", flexDirection: "row", alignItems: "center", gap: 10}}>
       <View>
         <Image

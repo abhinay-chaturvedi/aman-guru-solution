@@ -4,7 +4,7 @@ import React from 'react';
 // import { TabBarIcon } from '@/components/navigation/icons';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { HistoryIcon, OrdersIcon, ProfileIcon, TabBarIcon } from '@/components/navigation/icons';
+import { HistoryIcon, MessageIcon, OrdersIcon, TabBarIcon } from '@/components/navigation/icons';
 // import { ProfileIcon, TabBarIcon } from '@/components/navigation/icons';
 
 export default function TabLayout() {
@@ -47,12 +47,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="messages"
         options={{
-          title: 'Profile',
+          title: 'Messages',
           tabBarIcon: ({ color, focused }) => (
             // <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-            <ProfileIcon color={color}/>
+            <MessageIcon color={color}/>
           ),
         }}
       />
