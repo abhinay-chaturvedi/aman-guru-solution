@@ -4,9 +4,16 @@ import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import React from "react";
+import React, { useState } from "react";
+import { Redirect } from "expo-router";
 
 export default function HomeScreen() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  if(!isLoggedIn) {
+    return (
+      <Redirect href={"/login"}/>
+    )
+  }
   return (
     <View style={{}}>
       <ThemedView style={styles.titleContainer}>

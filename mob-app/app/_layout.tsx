@@ -46,7 +46,7 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen name="register" />
-        <Stack.Screen name="login" />
+        <Stack.Screen options={{headerShown: false}} name="login" />
         <Stack.Screen options={{headerTitle: "Profile"}} name="profile" />
 
         <Stack.Screen  name="+not-found" />
