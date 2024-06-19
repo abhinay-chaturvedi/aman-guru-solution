@@ -9,22 +9,20 @@ import {
 } from "react-native";
 import React from "react";
 
+const buttonDefaultStyle = {fontSize: 20, padding: 10, borderRadius: 10, color: "white", backgroundColor: "#f194ff"}
 export const CustomButton = ({
   title,
-  backgroundColor = "#f194ff",
-  color = "white",
-  btnStyle = {fontSize: 20, padding: 10, borderRadius: 10}
+  btnStyle = {...buttonDefaultStyle}
 }: {
   title: string;
-  backgroundColor?: string;
-  color?: string;
-  btnStyle?: {fontSize: number, padding: number, borderRadius: number}
+  btnStyle?: {fontSize?: number, padding?: number, borderRadius?: number, color?: string, backgroundColor?: string}
 }) => {
+  btnStyle = {...buttonDefaultStyle, ...btnStyle}
   return (
     <View style={{}}>
       <TouchableOpacity
         style={{
-          backgroundColor: backgroundColor,
+          backgroundColor: btnStyle.backgroundColor,
           padding: btnStyle.padding,
           borderRadius: btnStyle.borderRadius,
         }}
@@ -32,7 +30,7 @@ export const CustomButton = ({
         <Text
           style={{
             textAlign: "center",
-            color: color,
+            color: btnStyle.color,
             fontWeight: "bold",
             fontSize: btnStyle.fontSize,
           }}

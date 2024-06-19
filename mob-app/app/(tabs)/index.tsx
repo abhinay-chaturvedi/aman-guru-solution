@@ -11,7 +11,7 @@ export default function HomeScreen() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   if(!isLoggedIn) {
     return (
-      <Redirect href={"/login"}/>
+      <Redirect href={"/register"}/>
     )
   }
   return (
