@@ -32,7 +32,7 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
-
+  
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
@@ -45,7 +45,7 @@ export default function RootLayout() {
             ),
           }}
         />
-        <Stack.Screen name="register" />
+        <Stack.Screen options={{headerShown: false}} name="register" />
         <Stack.Screen options={{headerShown: false}} name="login" />
         <Stack.Screen options={{headerTitle: "Profile"}} name="profile" />
 
