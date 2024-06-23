@@ -28,15 +28,15 @@ const Register = () => {
             <Logo />
             <Input
               placeHolder="Enter Your Name"
-              InputIcon={() => <MailIcon color={iconColor} />}
+              LeftIcon={() => <MailIcon color={iconColor} />}
             />
             <Input
               placeHolder="Enter Your Email"
-              InputIcon={() => <MailIcon color={iconColor} />}
+              LeftIcon={() => <MailIcon color={iconColor} />}
             />
             <Input
               placeHolder="Enter Your Password"
-              InputIcon={() => <LockIcon color={iconColor} />}
+              LeftIcon={() => <LockIcon color={iconColor} />}
             />
             <CustomButton title={"Register"} />
             <View style={{display: "flex", flexDirection: "row",gap: 5, alignItems: "center"}}>

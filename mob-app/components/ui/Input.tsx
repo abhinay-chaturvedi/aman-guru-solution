@@ -4,7 +4,13 @@ import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { useThemeColor } from "@/hooks/useThemeColor";
 
-export function Input({ InputIcon, placeHolder = "" }: { InputIcon: () => JSX.Element, placeHolder: string }) {
+export function Input({
+  LeftIcon = () => null,
+  placeHolder = "",
+}: {
+  LeftIcon?: () => JSX.Element | null;
+  placeHolder: string;
+}) {
   const colorScheme = useColorScheme();
   const textColor = useThemeColor({}, "text");
   const borderColor = useThemeColor({}, "borderColor");
@@ -21,11 +27,11 @@ export function Input({ InputIcon, placeHolder = "" }: { InputIcon: () => JSX.El
         borderColor: borderColor,
       }}
     >
-      <InputIcon />
+      <LeftIcon />
       <TextInput
         placeholderTextColor={textColor}
         placeholder={placeHolder}
-        style={{ color: textColor, flex: 1 }}
+        style={{ color: textColor, flex: 1, fontSize: 16 }}
       />
     </View>
   );
