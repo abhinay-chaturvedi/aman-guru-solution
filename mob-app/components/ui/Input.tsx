@@ -7,9 +7,11 @@ import { useThemeColor } from "@/hooks/useThemeColor";
 export function Input({
   LeftIcon = () => null,
   placeHolder = "",
+  onFocus=() => null
 }: {
   LeftIcon?: () => JSX.Element | null;
   placeHolder: string;
+  onFocus?: () => any
 }) {
   const colorScheme = useColorScheme();
   const textColor = useThemeColor({}, "text");
@@ -29,6 +31,7 @@ export function Input({
     >
       <LeftIcon />
       <TextInput
+        onFocus={onFocus}
         placeholderTextColor={textColor}
         placeholder={placeHolder}
         style={{ color: textColor, flex: 1, fontSize: 16 }}

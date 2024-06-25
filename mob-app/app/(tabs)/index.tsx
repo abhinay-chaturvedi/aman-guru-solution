@@ -1,4 +1,11 @@
-import { Image, StyleSheet, Platform, View, FlatList, Text } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Platform,
+  View,
+  FlatList,
+  Text,
+} from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -7,45 +14,49 @@ import { ThemedView } from "@/components/ThemedView";
 import React, { useState } from "react";
 import { Redirect } from "expo-router";
 import { Input } from "@/components/ui";
+// import Brand from "@/components/SelectDropDownWithSearch";
+import SelectDropDownWithSearch from "@/components/SelectDropDownWithSearch";
 type ItemData = {
   id: string;
   title: string;
 };
-
 const DATA: ItemData[] = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-    title: 'First Item',
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    title: "First Item",
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-    title: 'Second Item',
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    title: "Second Item",
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
+    id: "58694a0f-3da1-471f-bd96-145571e29d72",
+    title: "Third Item",
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e2',
-    title: 'Third Item',
+    id: "58694a0f-3da1-471f-bd96-145571e2",
+    title: "Third Item",
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29',
-    title: 'Third Item',
+    id: "58694a0f-3da1-471f-bd96-145571e29",
+    title: "Third Item",
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d',
-    title: 'Third Item',
+    id: "58694a0f-3da1-471f-bd96-145571e29d",
+    title: "Third Item",
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d7',
-    title: 'Third Item',
+    id: "58694a0f-3da1-471f-bd96-145571e29d7",
+    title: "Third Item",
   },
 ];
 export default function HomeScreen() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   if (!isLoggedIn) {
     return <Redirect href={"/register"} />;
+  }
+  const handleBrandSelect = (item: ItemData) => {
+    console.log(item)
   }
   return (
     <View style={{}}>
@@ -84,14 +95,7 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView> */}
       <View style={{ margin: 10 }}>
-        <Input placeHolder="Search brand" />
-        <FlatList
-        data={DATA}
-        style={{height: 100}}
-        renderItem={() => (<Text style={{color: "gray",marginBottom: 5, backgroundColor: "white"}}>hi</Text>)}
-        keyExtractor={item => item.id}
-        // extraData={selectedId}
-      />
+        <SelectDropDownWithSearch onSelect={handleBrandSelect} data={DATA} placeHolder="Select Brand" />
       </View>
     </View>
   );
