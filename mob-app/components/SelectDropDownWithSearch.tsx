@@ -24,18 +24,28 @@ const SelectDropDownWithSearch = ({
 }) => {
   const backgroundColor = useThemeColor({}, "background");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const [text, setText] = useState("");
   const handleFocus = () => {
     setIsDropDownOpen(true);
     console.log("hello from the drop down side");
   };
+  const handleInputChange = (inputValue: string) => {
+    setText(inputValue);
+    console.log("---------input value", inputValue);
+  };
   return (
     <View style={{ display: "flex" }}>
-      <Input onFocus={handleFocus} placeHolder={placeHolder} />
+      <Input
+        text={text}
+        setText={handleInputChange}
+        onFocus={handleFocus}
+        placeHolder={placeHolder}
+      />
       {isDropDownOpen && (
         <FlatList
           data={data}
           style={{
-            height: 200,
+            height: 250,
             borderColor: "white",
             borderWidth: 1,
             zIndex: 20,
@@ -52,6 +62,7 @@ const SelectDropDownWithSearch = ({
               item={item}
               onSelect={onSelect}
               setIsDropDownOpen={setIsDropDownOpen}
+              setText={setText}
             />
           )}
           keyExtractor={(item) => item.id}
@@ -69,16 +80,19 @@ const RenderItem = ({
   item,
   setIsDropDownOpen,
   onSelect = () => null,
+  setText = () => null,
 }: {
   item: ItemData;
   setIsDropDownOpen: React.Dispatch<React.SetStateAction<boolean>>;
   onSelect: (item: ItemData) => any;
+  setText: React.Dispatch<React.SetStateAction<string>>;
 }) => {
   const backgroundColor = useThemeColor({}, "background");
   const textColor = useThemeColor({}, "text");
   const onPress = () => {
     setIsDropDownOpen(false);
     onSelect(item);
+    setText(item.title);
   };
   return (
     <TouchableOpacity
