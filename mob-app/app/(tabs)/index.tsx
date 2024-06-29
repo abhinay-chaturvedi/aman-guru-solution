@@ -96,6 +96,7 @@ export default function HomeScreen() {
       </ThemedView> */}
       <View style={{ margin: 10 }}>
         <SelectDropDownWithSearch onSelect={handleBrandSelect} data={DATA} placeHolder="Select Brand" />
+        <SelectDropDownWithSearch onSelect={handleBrandSelect} data={DATA} placeHolder="Select Model" />
       </View>
     </View>
   );

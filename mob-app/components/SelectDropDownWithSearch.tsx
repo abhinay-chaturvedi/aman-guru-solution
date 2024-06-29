@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Input } from "./ui";
 import { useThemeColor } from "@/hooks/useThemeColor";
 type ItemData = {
@@ -24,14 +24,31 @@ const SelectDropDownWithSearch = ({
 }) => {
   const backgroundColor = useThemeColor({}, "background");
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const timout= useRef<NodeJS.Timeout | null>(null);
   const [text, setText] = useState("");
+  const [listData, setListData] = useState(data);
   const handleFocus = () => {
     setIsDropDownOpen(true);
     console.log("hello from the drop down side");
   };
   const handleInputChange = (inputValue: string) => {
     setText(inputValue);
-    console.log("---------input value", inputValue);
+    console.log("Input value---------", inputValue);
+    // here we will implement the filter logic
+    // I will try to implement debouncing here because i am not going to filter the list
+    // for each character change in the input.
+    if(timout.current) {
+      clearInterval(timout.current)
+    }
+    timout.current = setTimeout(() => {
+      console.log("Want to see how many times we need to call")
+      setListData((prev) => {
+        
+        return data.filter((item) => {
+          return item.title.includes(inputValue);
+        });
+      });
+    }, 1000);
   };
   return (
     <View style={{ display: "flex" }}>
@@ -43,9 +60,9 @@ const SelectDropDownWithSearch = ({
       />
       {isDropDownOpen && (
         <FlatList
-          data={data}
+          data={listData}
           style={{
-            height: 250,
+            maxHeight: 250,
             borderColor: "white",
             borderWidth: 1,
             zIndex: 20,
